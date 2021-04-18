@@ -8,7 +8,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous"/>
+        crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -23,9 +25,9 @@
             <h3>Lista zadań:</h3>
             <p class="alertInfo">Brak zadań na liście.</p>
             <ul>
-                <li id='test'>Wypić kawę<div class="tools"><button class="complete"><i
-                                class="fas fa-check"></i></button><button class="edit">EDIT</button><button
-                            class="delete"><i class="fas fa-times"></i></button>
+                <li id='test'>Wypić kawę<div class="tools">
+                        <button class="complete"><i class="fas fa-check"></i></button><button
+                            class="edit">EDIT</button><button class="delete"><i class="fas fa-times"></i></button>
                     </div>
                 </li>
                 <li id='test2'>Zjeść śniadanie<div class="tools"><button class="complete"><i
@@ -46,7 +48,7 @@
         <h3>Edytuj zadanie:</h3>
         <div class="popupBody">
             <p class="popupInfo"></p>
-            <input type="text" class="popupInput" placeholder="Wprowadź nowę treść zadania...">
+            <input type="text" class="popupInput" placeholder="Wprowadź nową treść zadania...">
             <button class="popupBtn accept">Zatwierdź</button>
             <button class="popupBtn cancel">Anuluj</button>
         </div>
