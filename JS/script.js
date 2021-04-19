@@ -55,12 +55,25 @@ const createToolsArea = () => {
 }
 
 
+const checkClick = (e) => {
+    if (e.target.closest('button').classList.contains('complete')) {
+        e.target.closest('li').classList.toggle('completed');
+        e.target.closest('button').classList.toggle('completed');
+
+    } else if (e.target.closest('button').className === 'edit') {
+
+    } else if (e.target.closest('button').className === 'delete') {
+
+    }
+}
+
 
 
 
 
 const prepereDOMEvents = () => {
     $addBtn.addEventListener("click", addNewTask);
+    $ulList.addEventListener("click", checkClick);
 }
 
 
