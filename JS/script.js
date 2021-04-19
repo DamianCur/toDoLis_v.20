@@ -4,6 +4,14 @@ let $addBtn; // dodanie nowego zadania
 let $ulList; // lista zadań
 let $newTask; // nowe zadanie (li);
 
+let $popup;
+let $popupInfo;
+let $editedTodo;
+let $popupInput;
+let $addPopupBtn;
+let $closeTodoBtn;
+
+
 
 const main = () => {
     prepereDOMElements();
@@ -15,6 +23,11 @@ const prepereDOMElements = () => {
     $alertInfo = document.querySelector(".alertInfo");
     $addBtn = document.querySelector(".addBtn");
     $ulList = document.querySelector(".todoList ul");
+    $popup = document.querySelector('.popup');
+    $popupInfo = document.querySelector('.popupInfo');
+    $popupInput = document.querySelector('.popupInput');
+    $addPopupBtn = document.querySelector('.accept');
+    $closeTodoBtn = document.querySelector('.cancel');
 }
 
 
@@ -61,10 +74,18 @@ const checkClick = (e) => {
         e.target.closest('button').classList.toggle('completed');
 
     } else if (e.target.closest('button').className === 'edit') {
-
+        editTask();
     } else if (e.target.closest('button').className === 'delete') {
 
     }
+}
+
+const editTask = () => {
+    $popup.style.display = 'flex';
+}
+
+const closePopup = () => {
+    $popup.style.display = 'none';
 }
 
 
@@ -74,6 +95,7 @@ const checkClick = (e) => {
 const prepereDOMEvents = () => {
     $addBtn.addEventListener("click", addNewTask);
     $ulList.addEventListener("click", checkClick);
+    $closeTodoBtn.addEventListener("click", closePopup);
 }
 
 
