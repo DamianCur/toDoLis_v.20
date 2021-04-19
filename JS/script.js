@@ -3,13 +3,13 @@ let $alertInfo; // info o braku treści zadania
 let $addBtn; // dodanie nowego zadania
 let $ulList; // lista zadań
 let $newTask; // nowe zadanie (li);
-
 let $popup;
 let $popupInfo;
 let $editedTodo;
 let $popupInput;
 let $addPopupBtn;
 let $closeTodoBtn;
+let $idNumber = 0;
 
 
 
@@ -33,8 +33,10 @@ const prepereDOMElements = () => {
 
 const addNewTask = () => {
     if ($toDoInput.value !== "") {
+        $idNumber++;
         $newTask = document.createElement("li");
         $newTask.textContent = $toDoInput.value;
+        $newTask.setAttribute('id', `todo-${$idNumber}`);
         $ulList.appendChild($newTask);
         $toDoInput.value = "";
         $alertInfo.textContent = ""
@@ -74,18 +76,33 @@ const checkClick = (e) => {
         e.target.closest('button').classList.toggle('completed');
 
     } else if (e.target.closest('button').className === 'edit') {
-        editTask();
+        editTask(e);
     } else if (e.target.closest('button').className === 'delete') {
 
     }
 }
 
-const editTask = () => {
+const editTask = (e) => {
+    const oldTodo = e.target.closest('li').id;
+    $editedTodo = document.getElementById(oldTodo);
+    $popupInput.value = $editedTodo.firstChild.textContent;
     $popup.style.display = 'flex';
 }
 
+const changeTodo = () => {
+    if ($popupInput.value !== "") {
+        $editedTodo.firstChild.textContent = $popupInput.value;
+        $popup.style.display = 'none';
+        $popupInfo.textContent = "";
+    } else {
+        $popupInfo.textContent = 'Musisz podać jakąś treść'
+    }
+}
+
+
 const closePopup = () => {
     $popup.style.display = 'none';
+    $popupInfo.textContent = "";
 }
 
 
@@ -96,6 +113,7 @@ const prepereDOMEvents = () => {
     $addBtn.addEventListener("click", addNewTask);
     $ulList.addEventListener("click", checkClick);
     $closeTodoBtn.addEventListener("click", closePopup);
+    $addPopupBtn.addEventListener("click", changeTodo);
 }
 
 
