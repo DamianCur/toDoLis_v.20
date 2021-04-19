@@ -43,6 +43,7 @@ const addNewTask = () => {
         $toDoInput.value = "";
         $alertInfo.textContent = ""
         createToolsArea()
+        addNewTask()
 
     } else {
         $alertInfo.textContent = "Wpisz treść zadania!"
@@ -117,6 +118,12 @@ const deleteTask = (e) => {
     }
 }
 
+const enterCheck = (e) => {
+    if (e.keyCode === 13) {
+        addNewTask()
+    }
+}
+
 
 
 const prepereDOMEvents = () => {
@@ -124,7 +131,9 @@ const prepereDOMEvents = () => {
     $ulList.addEventListener("click", checkClick);
     $closeTodoBtn.addEventListener("click", closePopup);
     $addPopupBtn.addEventListener("click", changeTodo);
+    $toDoInput.addEventListener("keyup", enterCheck);
 }
+
 
 
 document.addEventListener("DOMContentLoaded", main)
